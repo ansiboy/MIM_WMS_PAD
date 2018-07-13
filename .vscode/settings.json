@@ -1,0 +1,14 @@
+{
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "www/*.js": true,
+        "www/controls/**/*.js": true,
+        "www/modules/**/*.js": true,
+        "www/services/**/*.js": true,
+        "www/selectors/**/*.js": true,
+    }
+}

@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "amd",
+        "jsx": "react",
+        "baseUrl": ".",
+        "paths": {
+            "../node_modules/@types/react/index": [
+                "react"
+            ]
+        }
+    }
+}

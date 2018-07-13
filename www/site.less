@@ -1,0 +1,113 @@
+@import "lib/bootstrap-3.3.7/less/variables.less";
+
+// site.less
+.validationMessage {
+    color: red;
+    font-weight: bold;
+}
+.page {
+    @header-height: 50px;
+    @footer-height: 50px;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    header {
+        @buttons-width: 80px;
+        height: @header-height;
+        position: absolute;
+        top: 0px;
+        background-color: @brand-primary;
+        display: none;
+        width: 100%;
+        text-align: center;
+        color: white;
+        z-index: 100;
+        .title {
+            padding-top: 14px;
+            font-size: 16px;
+            margin: 0 @buttons-width 0 @buttons-width;
+        }
+        .btn-link {
+            color: white;
+            padding-top: 14px;
+        }
+        .pull-left {
+            width: @buttons-width;
+            text-align: left;
+        }
+        .pull-right {
+            width: @buttons-width;
+            text-align: right;
+        }
+    }
+    section {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        overflow-y: auto;
+        overflow-x: hidden;
+        -webkit-user-drag:none;
+        -webkit-overflow-scrolling:touch;
+
+        .form-group.clearfix {
+            @label-width: 90px;
+            > label {
+                width: @label-width;
+                float: left;
+                padding-top: 4px;
+            }
+            > .form-control {
+                width: calc(~'100% - @{label-width}');
+                float: left;
+            }
+            > div {
+                padding-top: 4px;
+            }
+        }
+    }
+    footer {
+        height: @footer-height;
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        z-index: 100;
+        display: none;
+        background-color: white;
+        padding: 10px 15px 0px 15px;
+    }
+    &.showHeader {
+        header {
+            display: block;
+        }
+        section {
+            padding-top: @header-height;
+        }
+    }
+    &.showFooter {
+        footer {
+            display: block;
+        }
+        section {
+            padding-bottom: @header-height;
+        }
+    }
+    .loading {
+        padding-top: 100px;
+        text-align: center;
+    }
+    .empty {
+        padding-top: 100px;
+        padding-bottom: 100px;
+        text-align: center;
+    }
+    button {
+        i {
+            margin-right: 4px;
+        }
+    }
+    .master {
+        margin-top: 15px;
+    }
+}
