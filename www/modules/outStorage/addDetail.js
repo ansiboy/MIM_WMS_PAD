@@ -6,7 +6,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-define(["require", "exports", "app", "react", "modules/common/localProductSelector", "service", "dilu"], function (require, exports, app_1, React, localProductSelector_1, service_1, dilu_1) {
+define(["require", "exports", "app", "react", "modules/common/localProductSelector", "service", "dilu", "utilty"], function (require, exports, app_1, React, localProductSelector_1, service_1, dilu_1, utilty_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     class OutStorageAddDetailPage extends app_1.Page {
@@ -82,6 +82,7 @@ define(["require", "exports", "app", "react", "modules/common/localProductSelect
                                             if (this.validator.check() == false)
                                                 return;
                                             this.loadProduct(e.target.value);
+                                            utilty_1.Utility.hideKeyboard();
                                         }
                                         else {
                                             this.setState({ localProduct: null });

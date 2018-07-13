@@ -95,6 +95,9 @@ define(["require", "exports", "dilu"], function (require, exports, dilu_1) {
             // return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
             //     s4() + '-' + s4() + s4() + s4();
         }
+        static hideKeyboard() {
+            window['Keyboard'].hide();
+        }
     }
     exports.Utility = Utility;
 });

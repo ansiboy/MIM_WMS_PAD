@@ -3,6 +3,7 @@ import React = require('react');
 import LocalProductSelectorPage, { LocalProductSelectorData, LoadProductMethod } from "modules/common/localProductSelector";
 import { Service } from "service";
 import { FormValidator, rules as r } from "dilu";
+import { Utility } from "utilty";
 
 interface OutStorageAddDetailState {
     entity: OutStoDetailEntity,
@@ -105,6 +106,7 @@ export default class OutStorageAddDetailPage extends Page<OutStorageAddDetailSta
                                             return;
 
                                         this.loadProduct((e.target as HTMLInputElement).value);
+                                        Utility.hideKeyboard()
                                     }
                                     else {
                                         this.setState({ localProduct: null })

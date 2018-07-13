@@ -3,37 +3,6 @@ define(["require", "exports", "react", "react-dom", "./service", "pages"], funct
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.Page = pages_1.Page;
     exports.InputPage = pages_1.InputPage;
-    // export interface PageProps {
-    //     source: chitu.Page
-    // }
-    // export class Page<S> extends React.Component<PageProps, S>{
-    //     createService<T extends chitu.Service>(type?: chitu.ServiceConstructor<T>): T {
-    //         console.assert(this.props.source != null);
-    //         return this.props.source.createService(type);
-    //     }
-    //     get element() {
-    //         return this.props.source.element;
-    //     }
-    //     get data() {
-    //         return this.props.source.data;
-    //     }
-    // }
-    // export class InputPage<S> extends Page<S>{
-    //     private _componentDidMount: () => void;
-    //     constructor(props) {
-    //         super(props);
-    //         this._componentDidMount = this.componentDidMount;
-    //         this.componentDidMount = () => {
-    //             if (this._componentDidMount) {
-    //                 this._componentDidMount();
-    //             }
-    //             var firstInputElement = this.element.querySelector('input');
-    //             if (firstInputElement) {
-    //                 firstInputElement.focus();
-    //             }
-    //         }
-    //     }
-    // }
     class Application extends chitu.Application {
         constructor() {
             super(Application.createSiteMap());
@@ -43,6 +12,9 @@ define(["require", "exports", "react", "react-dom", "./service", "pages"], funct
                     return;
                 }
                 ui.alert(error.message);
+            });
+            document.addEventListener('deviceready', () => {
+                window['Keyboard'].hide();
             });
         }
         static createSiteMap() {
@@ -101,6 +73,8 @@ define(["require", "exports", "react", "react-dom", "./service", "pages"], funct
                 this.redirect('user_login');
         }
     }
+    window.setTimeout;
     requirejs(['less!site']);
+    requirejs(['cordova']);
     exports.app = window['app'] = window['app'] || new Application();
 });

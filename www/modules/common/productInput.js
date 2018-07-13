@@ -6,7 +6,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-define(["require", "exports", "app", "react", "modules/common/localProductSelector", "dilu", "service"], function (require, exports, app_1, React, localProductSelector_1, dilu_1, service_1) {
+define(["require", "exports", "app", "react", "modules/common/localProductSelector", "dilu", "service", "utilty"], function (require, exports, app_1, React, localProductSelector_1, dilu_1, service_1, utilty_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     class ProductInputPage extends app_1.Page {
@@ -98,6 +98,7 @@ define(["require", "exports", "app", "react", "modules/common/localProductSelect
                                         const KEYCODE_ENTER = 13;
                                         if (e.keyCode == KEYCODE_ENTER) {
                                             this.loadProduct(e.target.value);
+                                            utilty_1.Utility.hideKeyboard();
                                         }
                                     } }),
                                 React.createElement("div", { className: "input-group-addon", onClick: () => this.showProductSelecter() },

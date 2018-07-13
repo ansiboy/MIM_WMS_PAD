@@ -4,6 +4,7 @@ import LocalProductSelectorPage, { LocalProductSelectorData, LoadProductMethod }
 import { LocalSelectorData } from "modules/common/localSelector";
 import { FormValidator, rules as r } from "dilu";
 import { Service, LoadProductArguments } from "service";
+import { Utility } from "utilty";
 
 export interface ProductInputState {
     barCode?: string,
@@ -125,6 +126,7 @@ export default class ProductInputPage extends Page<ProductInputState>{
                                     const KEYCODE_ENTER = 13;
                                     if (e.keyCode == KEYCODE_ENTER) {
                                         this.loadProduct((e.target as HTMLInputElement).value);
+                                        Utility.hideKeyboard()
                                     }
                                 }} />
                             <div className="input-group-addon"

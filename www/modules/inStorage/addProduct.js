@@ -80,11 +80,6 @@ define(["require", "exports", "app", "react", "dilu", "service", "utilty"], func
                 name: 'ProductName', rules: [dilu_1.rules.required('商品部存在')],
                 depends: [() => this.validator.checkElement('BarCode')]
             });
-            // $(this.batchNumElement).AnyPicker({
-            //     mode: "datetime",
-            //     dateTimeFormat: "yyyy-M-d",
-            //     lang: 'zh-cn'
-            // })
             utilty_1.Utility.date(this.batchNumElement);
         }
         render() {
@@ -111,6 +106,7 @@ define(["require", "exports", "app", "react", "dilu", "service", "utilty"], func
                                         const KEYCODE_ENTER = 13;
                                         if (e.keyCode == KEYCODE_ENTER) {
                                             this.loadProduct(e.target.value);
+                                            utilty_1.Utility.hideKeyboard();
                                         }
                                     } }),
                                 React.createElement("div", { className: "input-group-addon", onClick: () => this.showProductList() },

@@ -97,6 +97,8 @@ export class Utility {
         // return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
         //     s4() + '-' + s4() + s4() + s4();
     }
-
+    static hideKeyboard() {
+        window['Keyboard'].hide()
+    }
 
 }

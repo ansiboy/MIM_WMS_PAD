@@ -23,6 +23,7 @@ export default class LoginPage extends Page<any>{
             { name: 'username', rules: [r.required('请输入用户名')] },
             { name: 'password', rules: [r.required('请输入密码')] }
         )
+        this.formElement["username"].value = 'administrator'
     }
     render() {
         return <section className="container">

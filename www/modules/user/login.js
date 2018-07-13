@@ -25,6 +25,7 @@ define(["require", "exports", "dilu", "service", "app", "react", "utilty"], func
         }
         componentDidMount() {
             this.validator = new dilu_1.FormValidator(this.element, { name: 'username', rules: [dilu_1.rules.required('请输入用户名')] }, { name: 'password', rules: [dilu_1.rules.required('请输入密码')] });
+            this.formElement["username"].value = 'administrator';
         }
         render() {
             return React.createElement("section", { className: "container" },

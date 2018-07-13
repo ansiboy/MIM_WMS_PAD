@@ -96,11 +96,6 @@ export default class InStorageAddProductPage extends InputPage<AddProductPageSta
                 depends: [() => this.validator.checkElement('BarCode')]
             },
         )
-        // $(this.batchNumElement).AnyPicker({
-        //     mode: "datetime",
-        //     dateTimeFormat: "yyyy-M-d",
-        //     lang: 'zh-cn'
-        // })
         Utility.date(this.batchNumElement);
     }
     render() {
@@ -132,7 +127,8 @@ export default class InStorageAddProductPage extends InputPage<AddProductPageSta
                                 onKeyDown={(e) => {
                                     const KEYCODE_ENTER = 13;
                                     if (e.keyCode == KEYCODE_ENTER) {
-                                        this.loadProduct((e.target as HTMLInputElement).value);
+                                        this.loadProduct((e.target as HTMLInputElement).value)
+                                        Utility.hideKeyboard()
                                     }
                                 }} />
                             <div className="input-group-addon" onClick={() => this.showProductList()}>
