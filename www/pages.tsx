@@ -167,7 +167,9 @@ export type MasterDetailState<M, D> = {
     master?: M,
     details?: D[],
 }
-export abstract class MasterDetailPage<S extends MasterDetailState<M, D>, M, D extends BaseEntity> extends Page<S> {
+export abstract class MasterDetailPage<
+    S extends MasterDetailState<M, D>, M,
+    D extends { ID: number, ProductName: string }> extends Page<S> {
     protected title: string = '';
     constructor(props) {
         super(props)
@@ -178,6 +180,12 @@ export abstract class MasterDetailPage<S extends MasterDetailState<M, D>, M, D e
     abstract renderDetail(detail: D): JSX.Element;
     abstract save(master: M, details: D[]): Promise<any>;
     abstract createDetail(): Promise<D>;
+
+    removeDetail(detail: D) {
+        let { details } = this.state;
+        details = details.filter(o => o != detail);
+        this.setState({ details });
+    }
     render() {
         let { master, details } = this.state;
         return <>
@@ -201,7 +209,23 @@ export abstract class MasterDetailPage<S extends MasterDetailState<M, D>, M, D e
                         </div> :
                     <ul className="list-group">
                         {details.map((o, i) =>
-                            <li key={i}>{this.renderDetail(o)}</li>
+                            <li key={i} className="list-group-item">
+                                <div className="pull-right"
+                                    onClick={
+                                        Utility.elementOnClick(
+                                            () => this.removeDetail(o),
+                                            {
+                                                confirm: () => `确定删除'${o.ProductName}'吗`
+                                            }
+                                        )
+                                    }>
+                                    <i className="icon-remove" />
+                                </div>
+                                <div style={{ marginRight: 40 }}>
+                                    {this.renderDetail(o)}
+                                </div>
+
+                            </li>
                         )}
                     </ul>
                 }

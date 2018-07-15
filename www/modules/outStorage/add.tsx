@@ -188,17 +188,35 @@ export default class OutStorageAddPage extends MasterDetailPage<OutStorageAddSta
             if (!this.validator.checkElement(name)) {
                 return reject('validate fail.');
             }
-            let data: OutStorageAddDetailData = {
-                loadProductMethod: 'localProductList',
+            // let data: OutStorageAddDetailData = {
+            //     loadProductMethod: 'localProductList',
+            //     storageNum: this.state.master.StorageNum,
+            //     confirm: (item) => {
+            //         console.assert(item != null);
+            //         resolve(item);
+            //     }
+            // }
+            // app.redirect('outStorage_addDetail', data);
+            //OutStorageAddDetailPage.show(data);
+            let data: ProductInputData = {
+                method: 'localProductList',
                 storageNum: this.state.master.StorageNum,
-                confirm: (item) => {
+                numberLabel: '出库数量',
+                confirm: (item, local, num) => {
                     console.assert(item != null);
-                    resolve(item);
+                    let { ProductName, ProductNum, BarCode,
+                        LocalName, LocalNum, StorageName, StorageNum,
+                        BatchNum, Size,
+                    } = item;
+                    let entity = {
+                        ProductName, ProductNum, BarCode,
+                        LocalName, LocalNum, StorageName, StorageNum,
+                        BatchNum, Size, Num: num
+                    } as OutStoDetailEntity
+                    resolve(entity);
                 }
             }
-            // app.redirect('outStorage_addDetail', data);
-            OutStorageAddDetailPage.show(data);
-
+            ProductInputPage.show(data)
             // let data: ProductInputData = {
             //     method: 'localProductList',
             //     storageNum: this.state.master.StorageNum,

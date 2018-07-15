@@ -79,7 +79,7 @@ define(["require", "exports", "app", "react", "modules/common/localProductSelect
                                     }, onKeyDown: (e) => {
                                         const KEYCODE_ENTER = 13;
                                         if (e.keyCode == KEYCODE_ENTER) {
-                                            if (this.validator.check() == false)
+                                            if (this.validator.checkElement('BarCode') == false)
                                                 return;
                                             this.loadProduct(e.target.value);
                                             utilty_1.Utility.hideKeyboard();

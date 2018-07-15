@@ -33,9 +33,6 @@ export default class InStorageAddPage extends Page<AddPageState>{
             }
             this.setState({ storages, entity });
         })
-        // this.service.fromList().then(froms => {
-        //     this.setState({ froms });
-        // })
     }
     defaultEntity() {
         let entity = {

@@ -6,7 +6,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-define(["require", "exports", "pages", "service", "utilty", "react", "dilu", "modules/outStorage/addDetail"], function (require, exports, pages_1, service_1, utilty_1, React, dilu_1, addDetail_1) {
+define(["require", "exports", "pages", "service", "utilty", "react", "dilu", "../common/productInput"], function (require, exports, pages_1, service_1, utilty_1, React, dilu_1, productInput_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var EOutType;
@@ -150,16 +150,32 @@ define(["require", "exports", "pages", "service", "utilty", "react", "dilu", "mo
                 if (!this.validator.checkElement(name)) {
                     return reject('validate fail.');
                 }
+                // let data: OutStorageAddDetailData = {
+                //     loadProductMethod: 'localProductList',
+                //     storageNum: this.state.master.StorageNum,
+                //     confirm: (item) => {
+                //         console.assert(item != null);
+                //         resolve(item);
+                //     }
+                // }
+                // app.redirect('outStorage_addDetail', data);
+                //OutStorageAddDetailPage.show(data);
                 let data = {
-                    loadProductMethod: 'localProductList',
+                    method: 'localProductList',
                     storageNum: this.state.master.StorageNum,
-                    confirm: (item) => {
+                    numberLabel: '出库数量',
+                    confirm: (item, local, num) => {
                         console.assert(item != null);
-                        resolve(item);
+                        let { ProductName, ProductNum, BarCode, LocalName, LocalNum, StorageName, StorageNum, BatchNum, Size, } = item;
+                        let entity = {
+                            ProductName, ProductNum, BarCode,
+                            LocalName, LocalNum, StorageName, StorageNum,
+                            BatchNum, Size, Num: num
+                        };
+                        resolve(entity);
                     }
                 };
-                // app.redirect('outStorage_addDetail', data);
-                addDetail_1.default.show(data);
+                productInput_1.default.show(data);
                 // let data: ProductInputData = {
                 //     method: 'localProductList',
                 //     storageNum: this.state.master.StorageNum,

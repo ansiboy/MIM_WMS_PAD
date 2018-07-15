@@ -121,9 +121,7 @@ define(["require", "exports", "app", "react", "dilu", "service", "utilty"], func
                             React.createElement("input", { name: "Expiry", className: "form-control pull-right", placeholder: "\u68C0\u5B9A\u671F", style: { width: `calc(${INPUT_DEFAULT_WIDTH} / 2 - 10px)` }, value: entity.Expiry || '', readOnly: true })),
                         React.createElement("div", { className: "form-group clearfix" },
                             React.createElement("label", null, "\u6570\u91CF"),
-                            React.createElement("input", { name: "Num", className: "form-control", value: entity.Num, onChange: (e) => {
-                                    if (!e)
-                                        return;
+                            React.createElement("input", { name: "Num", className: "form-control", value: entity.Num || '', onChange: (e) => {
                                     entity.Num = Number.parseInt(e.target.value);
                                     this.setState({ entity });
                                 } })),

@@ -121,6 +121,11 @@ define(["require", "exports", "react", "app", "utilty"], function (require, expo
             this.title = '';
             this.state = { master: this.defaultMaster(), details: [] };
         }
+        removeDetail(detail) {
+            let { details } = this.state;
+            details = details.filter(o => o != detail);
+            this.setState({ details });
+        }
         render() {
             let { master, details } = this.state;
             return React.createElement(React.Fragment, null,
@@ -135,7 +140,12 @@ define(["require", "exports", "react", "app", "utilty"], function (require, expo
                     React.createElement("h4", null, "\u7269\u8D44\u660E\u7EC6"),
                     details.length == 0 ?
                         React.createElement("div", { className: "empty" }, "\u6682\u65E0\u7269\u8D44\u660E\u7EC6\uFF0C\u70B9\u51FB\u201C\u65B0\u589E\u7269\u8D44\u201D\u6309\u94AE\u6DFB\u52A0") :
-                        React.createElement("ul", { className: "list-group" }, details.map((o, i) => React.createElement("li", { key: i }, this.renderDetail(o))))),
+                        React.createElement("ul", { className: "list-group" }, details.map((o, i) => React.createElement("li", { key: i, className: "list-group-item" },
+                            React.createElement("div", { className: "pull-right", onClick: utilty_1.Utility.elementOnClick(() => this.removeDetail(o), {
+                                    confirm: () => `确定删除'${o.ProductName}'吗`
+                                }) },
+                                React.createElement("i", { className: "icon-remove" })),
+                            React.createElement("div", { style: { marginRight: 40 } }, this.renderDetail(o)))))),
                 React.createElement("footer", null,
                     React.createElement("div", { className: "form-group" },
                         React.createElement("div", { className: "col-xs-6", style: { padding: 0 } },

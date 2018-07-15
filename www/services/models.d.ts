@@ -248,7 +248,7 @@ interface MoveOrderDetailEntity {
 }
 
 interface BaseEntity {
-    ID?: number
+    ID: number
 }
 
 interface LocalProductEntity extends BaseEntity {
@@ -328,6 +328,7 @@ interface OutStoDetailEntity extends BaseEntity {
     ProductName: string,
     ProductNum: string,
 
+    Size: string,
     StorageName: string,
     StorageNum: string,
 }

@@ -26,9 +26,6 @@ define(["require", "exports", "react", "app", "service", "dilu", "utilty"], func
                 }
                 this.setState({ storages, entity });
             });
-            // this.service.fromList().then(froms => {
-            //     this.setState({ froms });
-            // })
         }
         defaultEntity() {
             let entity = {

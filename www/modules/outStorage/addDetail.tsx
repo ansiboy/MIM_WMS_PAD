@@ -102,7 +102,7 @@ export default class OutStorageAddDetailPage extends Page<OutStorageAddDetailSta
                                 onKeyDown={(e) => {
                                     const KEYCODE_ENTER = 13;
                                     if (e.keyCode == KEYCODE_ENTER) {
-                                        if (this.validator.check() == false)
+                                        if (this.validator.checkElement('BarCode') == false)
                                             return;
 
                                         this.loadProduct((e.target as HTMLInputElement).value);

@@ -152,9 +152,8 @@ export default class InStorageAddProductPage extends InputPage<AddProductPageSta
                     </div>
                     <div className="form-group clearfix">
                         <label>数量</label>
-                        <input name="Num" className="form-control" value={entity.Num}
+                        <input name="Num" className="form-control" value={entity.Num || ''}
                             onChange={(e) => {
-                                if (!e) return;
                                 entity.Num = Number.parseInt((e.target as HTMLInputElement).value);
                                 this.setState({ entity });
                             }} />
